@@ -1,6 +1,6 @@
 # Sensor Data acquisition over Ble
 
-This example shows how to aquire the sensor data over the ble and send it to the server using the wifi.
+This example shows how to aquire the sensor data over the ble and send it to the server using the wifi. The soc we used in this project is esp32
 
 The example composed of the 2 devices, one is peripheral and other is central.
 
