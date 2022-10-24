@@ -1,0 +1,88 @@
+menu "Project Configuration"
+    menu "Ble Configuration"
+    
+        config REMOTE_DEVICE_NAME
+            string "Device name"
+            default "mydev"
+            help 
+                Name of the peripheral device. It is required by the central to find it.Please do not use the space between the device name.It has be same as in the peripheral device.Name should be loweer than 50 character
+        
+        config REMOTE_SERVICE_UUID
+            hex "16 bit service UUID"
+            default 0XAAFF
+            help
+                Provide the 16 bit uuid which is advertise by the peripheral device and to be found by the central device.
+
+        config REMOTE_NOTIFY_CHAR_UUID
+            hex "16 bit charactersitic  UUID"
+            default 0xFF01
+            help
+                Provide the 16 bit characterstic uuid which is to be found by the central device.
+
+        config SCANNING_DURATION
+            int "Scan Duration in Seconds"
+            default 600
+            help
+                Please provide the scan time upto which the scanning is performed. This is the time upto which the scanning is performed to look the peripheral device.
+    endmenu
+     
+    menu "Deep Sleep configuration"
+    config DEEP_SLEEP_TIME_IN_SECONDS
+        int "Deep sleep time in seconds"
+        default 180
+        help
+            Provide the deep sleep time in seconds.Centeral will publish the result to the mqtt and then sleep.
+    endmenu
+
+    menu "WiFi configuration"
+
+        config EXAMPLE_ESP_WIFI_SSID
+            string "SSID for wifi"
+            default "SSID"
+            help
+                Provide the wifi sidds to be connectd.
+
+        config EXAMPLE_ESP_WIFI_PASS
+            string "Password for the wifi"
+            default  "password"
+            help
+                Provide the wifi password
+
+        
+    endmenu
+
+    menu "Mqtt Configuration"
+        config CONFIG_BROKER_HOST
+            string "MQTT host"
+            default "mqtt://20.47.111.32"
+            help
+                Provide the mqtt host uri for mqtt server
+
+        config LOGIN_ID
+            string "MQTT User Name"
+            default "beehub"
+            help
+                Provide the mqtt username to connect to the server
+
+        config PASSWROD
+            string "Mqtt password"
+            default "Test123@"
+            help
+                Please provide the password for the mqtt server
+
+        config TOPIC
+            string "Topic prefix to be published"
+            default "measurement/bletest/"
+            help
+                According to the documents, the published topic will be TOPIC PREFIX + DEVICE ID.
+
+        config CLIENT_ID
+            string "client id prefix"
+            default "esp-"
+            help
+                Plese provide the client id prefix. The current client id prefix will be esp-deviceId.
+        
+    endmenu
+
+
+endmenu

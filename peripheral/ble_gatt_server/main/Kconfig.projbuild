@@ -1,0 +1,33 @@
+menu "Project Configuration"
+    comment "please provide the name of the peripheral device eg mydev or peri"
+        config DEVICE_NAME
+            string "Device name"
+            default "mydev"
+            help 
+                Name of the device. It is required by the central to find it.Please do not use the space between the device name.
+        
+        config UUID_SERVICE
+            hex "16 bit service UUID"
+            default 0XAAFF
+            help
+                Provide the 16 bit uuid which is advertise by the peripheral device and to be found by the central device.
+
+        config UUID_CHAR
+            hex "16 bit charactersitic  UUID"
+            default 0xFF01
+            help
+                Provide the 16 bit characterstic uuid which is to be found by the central device.
+
+        config DEVICE_ID
+            string "Device Id"
+            default "1270FEF2-08D5-49E8-8B2B-42E1B4F22188"
+            help
+                Provide the 128 bit uuid for the device. This device id will be sended to the mqtt server
+
+        config WAKEUP_TIME_IN_SECONDS
+            int "Deep sleep time in seconds"
+            default 180
+            help
+                Provide the deep sleep time in seconds. Peripheral will publish the data to the central device and goes into the sleep
+
+endmenu
